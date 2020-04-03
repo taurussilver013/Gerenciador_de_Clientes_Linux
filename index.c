@@ -18,9 +18,37 @@ int main() { //Função Principal
     printf("[4] - Remover\n\n");
 
     printf("[5] - Encerrar\n");
-    printf("=========\n");
+    printf("===============\n");
     printf("Opção: ");
     scanf("%d", &Global.Op);
+
+    switch (Global.Op)
+    {
+    case 1:
+        printf("Função Cadastro Iniciada...\n");
+        break;
+    
+    case 2:
+        printf("Função Alterar Iniciada...\n");
+        break;
+
+    case 3:
+        printf("Função Listar Iniciada...\n");
+        break;
+
+    case 4:
+        printf("Função Remover Iniciada...\n");
+        break;
+
+    case 5:
+        printf("Fim da Execução...\n");
+        break;
+    
+    default:
+        printf("Valor inválido! Tente novamente...\n");
+        main();
+        break;
+    }
 
     return 0;
 }
