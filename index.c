@@ -1,8 +1,14 @@
 #include <stdio.h>
 
+void Cadastro();
+//Chamada de funções externas
+
 struct VarG {
     int Op;
+
 }; //Vaiáveis do tipo Global
+
+FILE* DB; //Ponteiro do Banco de dados
 
 struct VarG Global; // Definição da Struct
 
@@ -25,7 +31,7 @@ int main() { //Função Principal
     switch (Global.Op)
     {
     case 1:
-        printf("Função Cadastro Iniciada...\n");
+        Cadastro();
         break;
     
     case 2:
@@ -51,4 +57,18 @@ int main() { //Função Principal
     }
 
     return 0;
+} //Fim da Função Main
+
+void Cadastro() {
+    system("clear");
+    DB = fopen("dados.txt", "a"); //Abertura do Banco de dados
+
+    if(DB == NULL) {
+        printf("\nErro no banco de dados...\n");
+        return 1;
+
+    } //Verificação do Banco de Dados
+
+    
+
 }
