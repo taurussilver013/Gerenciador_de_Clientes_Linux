@@ -5,12 +5,21 @@ void Cadastro();
 
 struct VarG {
     int Op;
+    int i;
 
 }; //Vaiáveis do tipo Global
 
+struct Cadastro {
+    char Nome[15];
+    char Email[35];
+    int Cpf;
+
+};
+
 FILE* DB; //Ponteiro do Banco de dados
 
-struct VarG Global; // Definição da Struct
+struct VarG Global;
+struct Cadastro Pessoa; // Definição das Structs
 
 int main() { //Função Principal
     system("clear"); //Limpa a tela
@@ -69,6 +78,27 @@ void Cadastro() {
 
     } //Verificação do Banco de Dados
 
-    
+    printf("\n==========\n");
+    printf(" CADASTRO\n");
+    printf("==========\n");
+
+    printf("\nDigite seu nome: ");
+    scanf("%s", &Pessoa.Nome); //Recebe a String Nome
+    printf("\nDigite seu E-mail: ");
+    scanf("%s", &Pessoa.Email); //Recebe a String Email
+    printf("\nDigite seu CPF: ");
+    scanf("%d", &Pessoa.Cpf); //Recebe o Cpf com valor int
+
+    fprintf(DB, "\n%s %s %d\n", Pessoa.Nome, Pessoa.Email, Pessoa.Cpf); //Salva os dados
+
+    fclose(DB); //Fecha o Banco de dados
+
+    system("clear");
+    printf("######################\n");
+    printf("# Cadastro Concluído #\n");
+    printf("######################\n");
+
+    sleep(1);
+    main();
 
 }
