@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void Cadastro();
+void Listar();
 //Chamada de funções externas
 
 struct VarG {
@@ -48,7 +49,7 @@ int main() { //Função Principal
         break;
 
     case 3:
-        printf("Função Listar Iniciada...\n");
+        Listar();
         break;
 
     case 4:
@@ -71,15 +72,15 @@ int main() { //Função Principal
 
 void Cadastro() {
     system("clear");
-    DB = fopen("dados.txt", "a"); //Abertura do Banco de dados
+    DB = fopen("dados.txt", "a"); //Abertura do DB para a inserção de dados
 
     if(DB == NULL) {
-        printf("\nErro no banco de dados...\n");
+        printf("\nErro no Banco de Dados...\n");
         return 1;
 
     } //Verificação do Banco de Dados
 
-    printf("\n==========\n");
+    printf("==========\n");
     printf(" CADASTRO\n");
     printf("==========\n");
 
@@ -90,7 +91,8 @@ void Cadastro() {
     printf("\nDigite seu CPF: ");
     fgets(Pessoa.Cpf, 15, stdin); //Recebe a String Cpf
 
-    fprintf(DB, "%s%s%s\n", Pessoa.Nome, Pessoa.Email, Pessoa.Cpf); //Salva os dados
+    fprintf(DB, "Nome: %sE-mail: %sCPF: %s", Pessoa.Nome, Pessoa.Email, Pessoa.Cpf); //Salva os dados
+    fprintf(DB, "----------------------\n");
 
     fclose(DB); //Fecha o Banco de dados
 
@@ -101,5 +103,30 @@ void Cadastro() {
 
     sleep(1);
     main();
+
+} //Fim da função Cadastro
+
+void Listar() {
+    system("clear");
+    DB = fopen("dados.txt", "r"); //Abertura do DB para leitura de dados
+
+    if(DB == NULL) {
+        printf("\nErro no Banco de Dados...\n");
+        return 1;
+
+    } //Verificação do Banco de Dados
+
+    char listagem[100]; //String geral para os dados
+
+    printf("======================\n");
+    printf(" LISTAGEM DE CLIENTES\n");
+    printf("======================\n\n");
+
+    while(fgets(listagem, 1000, DB) != NULL) {
+        printf("%s", listagem);
+
+    } //Considera todos os dados como uma String e exibe na tela
+
+    fclose(DB);
 
 }
