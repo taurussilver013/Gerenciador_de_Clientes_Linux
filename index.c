@@ -6,6 +6,7 @@ void Listar();
 
 struct VarG {
     int Op;
+    char Cd;
 
 }; //Vaiáveis do tipo Global
 
@@ -128,5 +129,13 @@ void Listar() {
     } //Considera todos os dados como uma String e exibe na tela
 
     fclose(DB);
+
+    printf("\nVoltar ao Menu Principal? [s/n]: ");
+    scanf("%c", &Global.Cd);
+
+    if(Global.Cd == 's') {
+        main();
+
+    }
 
 }
