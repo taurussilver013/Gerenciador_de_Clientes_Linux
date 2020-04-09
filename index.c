@@ -9,9 +9,9 @@ struct VarG {
 }; //Vaiáveis do tipo Global
 
 struct Cadastro {
-    char Nome[15];
+    char Nome[25];
     char Email[35];
-    int Cpf;
+    char Cpf[15];
 
 }; // Variáveis do tipo Cadastro.Pessoa
 
@@ -35,6 +35,7 @@ int main() { //Função Principal
     printf("===============\n");
     printf("Opção: ");
     scanf("%d", &Global.Op);
+    getchar(); //Limpa o Buffer
 
     switch (Global.Op)
     {
@@ -83,13 +84,13 @@ void Cadastro() {
     printf("==========\n");
 
     printf("\nDigite seu nome: ");
-    scanf("%s", &Pessoa.Nome); //Recebe a String Nome
+    fgets(Pessoa.Nome, 25, stdin); //Recebe a String Nome
     printf("\nDigite seu E-mail: ");
-    scanf("%s", &Pessoa.Email); //Recebe a String Email
+    fgets(Pessoa.Email, 35, stdin); //Recebe a String Email
     printf("\nDigite seu CPF: ");
-    scanf("%d", &Pessoa.Cpf); //Recebe o Cpf com valor int
+    fgets(Pessoa.Cpf, 15, stdin); //Recebe a String Cpf
 
-    fprintf(DB, "\n%s %s %d\n", Pessoa.Nome, Pessoa.Email, Pessoa.Cpf); //Salva os dados
+    fprintf(DB, "%s%s%s\n", Pessoa.Nome, Pessoa.Email, Pessoa.Cpf); //Salva os dados
 
     fclose(DB); //Fecha o Banco de dados
 
