@@ -5,7 +5,6 @@ void Cadastro();
 
 struct VarG {
     int Op;
-    int i;
 
 }; //Vaiáveis do tipo Global
 
@@ -14,7 +13,7 @@ struct Cadastro {
     char Email[35];
     int Cpf;
 
-};
+}; // Variáveis do tipo Cadastro.Pessoa
 
 FILE* DB; //Ponteiro do Banco de dados
 
@@ -56,6 +55,7 @@ int main() { //Função Principal
         break;
 
     case 5:
+        system("clear");
         printf("Fim da Execução...\n");
         break;
     
