@@ -8,7 +8,7 @@ struct VarG {
     int Op;
     char Cd;
 
-}; //Vaiáveis do tipo Global
+}; //Variáveis do tipo Global
 
 struct Cadastro {
     char Nome[25];
@@ -22,8 +22,8 @@ FILE* DB; //Ponteiro do Banco de dados
 struct VarG Global;
 struct Cadastro Pessoa; // Definição das Structs
 
-int main() { //Função Principal
-    system("clear"); //Limpa a tela
+int main() {
+    system("clear"); //Limpa a tela (Linux)
     printf("=========================\n");
     printf(" GERENCIADOR DE CLIENTES\n");
     printf("=========================\n\n");
@@ -41,7 +41,7 @@ int main() { //Função Principal
 
     switch (Global.Op) {
     case 1:
-        Cadastro();
+        Cadastro(); //Funcão Cadastro é iniciada
         break;
     
     case 2:
@@ -49,7 +49,7 @@ int main() { //Função Principal
         break;
 
     case 3:
-        Listar();
+        Listar(); //Função Listar é iniciada
         break;
 
     case 4:
@@ -65,13 +65,13 @@ int main() { //Função Principal
     
     default:
         printf("Valor inválido! Tente novamente...\n");
-        sleep(1);
+        sleep(1); //Pausa a tela por 1s (Linux)
         main();
         break;
     }
 
     return 0;
-} //Fim da Função Main
+} //Fim da Função Principal
 
 void Cadastro() {
     system("clear");
@@ -100,8 +100,8 @@ void Cadastro() {
     scanf("%c", &Global.Cd); //Conclusão do cadastro
 
     if(Global.Cd == 's') {
-    fprintf(DB, "Nome: %sE-mail: %sCPF: %s", Pessoa.Nome, Pessoa.Email, Pessoa.Cpf); //Salva os dados
-    fprintf(DB, "----------------------\n");
+    fprintf(DB, "Nome: %sE-mail: %sCPF: %s", Pessoa.Nome, Pessoa.Email, Pessoa.Cpf);
+    fprintf(DB, "----------------------\n"); //Salva os dados
 
     fclose(DB); //Fecha o Banco de dados
 
@@ -117,7 +117,7 @@ void Cadastro() {
         system("clear");
         printf("Cadastro Cancelado.\nVoltando ao Menu Principal...\n");
         fclose(DB); //Fecha DB
-        getchar(); //Corrige bug quando Global.Cd != s && n
+        getchar(); //Corrige bug quando Global.Cd != 's' && 'n'        
         sleep(1);
         main();
 
