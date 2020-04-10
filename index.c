@@ -39,8 +39,7 @@ int main() { //Função Principal
     scanf("%d", &Global.Op);
     getchar(); //Limpa o Buffer
 
-    switch (Global.Op)
-    {
+    switch (Global.Op) {
     case 1:
         Cadastro();
         break;
@@ -59,11 +58,14 @@ int main() { //Função Principal
 
     case 5:
         system("clear");
-        printf("Fim da Execução...\n");
+        printf("######################\n");
+        printf("# Fim da Execução... #\n");
+        printf("######################\n\n");
         break;
     
     default:
         printf("Valor inválido! Tente novamente...\n");
+        sleep(1);
         main();
         break;
     }
@@ -92,6 +94,12 @@ void Cadastro() {
     printf("\nDigite seu CPF: ");
     fgets(Pessoa.Cpf, 15, stdin); //Recebe a String Cpf
 
+    system("clear");
+    printf("\n=============================\n");
+    printf("Finalizar cadastro? [s/n] : ");
+    scanf("%c", &Global.Cd); //Conclusão do cadastro
+
+    if(Global.Cd == 's') {
     fprintf(DB, "Nome: %sE-mail: %sCPF: %s", Pessoa.Nome, Pessoa.Email, Pessoa.Cpf); //Salva os dados
     fprintf(DB, "----------------------\n");
 
@@ -104,6 +112,22 @@ void Cadastro() {
 
     sleep(1);
     main();
+
+    } else if(Global.Cd == 'n') {
+        system("clear");
+        printf("Cadastro Cancelado.\nVoltando ao Menu Principal...\n");
+        fclose(DB); //Fecha DB
+        getchar(); //Corrige bug quando Global.Cd != s && n
+        sleep(1);
+        main();
+
+    } else {
+        printf("Valor inválido. Tente novamente...\n");
+        fclose(DB); //Fecha DB
+        sleep(1);
+        Cadastro();
+
+    }
 
 } //Fim da função Cadastro
 
@@ -134,6 +158,11 @@ void Listar() {
     scanf("%c", &Global.Cd);
 
     if(Global.Cd == 's') {
+        main();
+
+    } else if(Global.Cd != 's' && Global.Cd != 'n') {
+        printf("Valor inválido.\nVoltando ao Menu Principal...\n");
+        sleep(1);
         main();
 
     }
