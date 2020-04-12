@@ -45,7 +45,28 @@ int main() {
             break;
     
         case 2:
-            printf("Função Alterar Iniciada...\n");
+            system("clear");
+            printf("=========\n");
+            printf(" ALTERAR\n");
+            printf("=========\n\n");
+
+            printf("Para alterar os dados de um cadastro, acesse o\narquivo ");
+            printf("dados.txt e modifique manualmente através\nde um editor ");
+            printf("de texto.\n\n");
+
+            printf("\nVoltar ao Menu Principal? [s/n]: ");
+            scanf("%c", &Global.Cd);
+
+            if(Global.Cd == 's') {
+                main();
+
+            } else if(Global.Cd != 's' && Global.Cd != 'n') {
+                printf("Valor inválido.\nVoltando ao Menu Principal...\n");
+                sleep(1);
+                main();
+
+            }
+
             break;
 
         case 3:
@@ -53,7 +74,28 @@ int main() {
             break;
 
         case 4:
-            printf("\nFunção Remover Iniciada...\n");
+            system("clear");
+            printf("=========\n");
+            printf(" REMOVER\n");
+            printf("=========\n\n");
+
+            printf("Para remover os dados de um cliente, acesse\no arquivo ");
+            printf("dados.txt e realize o processo \nmanualmente, salvando o ");
+            printf("arquivo logo em seguida.\n\n");
+
+            printf("\nVoltar ao Menu Principal? [s/n]: ");
+            scanf("%c", &Global.Cd);
+
+            if(Global.Cd == 's') {
+                main();
+
+            } else if(Global.Cd != 's' && Global.Cd != 'n') {
+                printf("Valor inválido.\nVoltando ao Menu Principal...\n");
+                sleep(1);
+                main();
+
+            }
+
             break;
 
         case 5:
@@ -87,10 +129,12 @@ void Cadastro() {
         printf(" CADASTRO\n");
         printf("==========\n");
 
-        printf("\nDigite seu nome: ");
+        printf("\nNome: ");
         fgets(Pessoa.Nome, 25, stdin); //Recebe a String Nome
-        printf("\nDigite seu E-mail: ");
+        
+        printf("\nE-mail: ");
         fgets(Pessoa.Email, 35, stdin); //Recebe a String Email
+        
         printf("\nDigite seu CPF: ");
         fgets(Pessoa.Cpf, 15, stdin); //Recebe a String Cpf
 
