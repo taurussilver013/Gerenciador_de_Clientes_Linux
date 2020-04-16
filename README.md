@@ -2,6 +2,8 @@
 O sistema realiza o cadastro de clientes se baseando no Nome, E-mail e Cpf de um indivíduo. Esses dados são salvos em um
 arquivo de texto que é utilizado como um "Banco de Dados". 
 
+Esse arquivo será criado altomaticamente na primeira execução.
+
 ![main](https://github.com/Niiick013/Gerenciador_de_Clientes/blob/master/main.png)
 
 Além disso, é possível também, listar todos os clientes e seus dados contidos no DB. E para tal, o programa considera todos
